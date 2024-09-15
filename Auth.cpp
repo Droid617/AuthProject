@@ -3,6 +3,7 @@
 #include <string>
 #include "Auth.h"
 
+//checking is user with these nickname and password (already) exists
 bool ValidUser(const std::string& nick, const std::string& passwd, bool check = false)
 {
     std::string nickname;
@@ -12,6 +13,7 @@ bool ValidUser(const std::string& nick, const std::string& passwd, bool check = 
     std::ifstream dataBase("Database.txt", std::ios::in);
     while (dataBase >> nickname >> password)
     {
+        //if user exists: block signUp (else: signIn)
         if (check && nickname == nick)
         {
             dataBase.close();
